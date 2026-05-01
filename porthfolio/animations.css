@@ -67,21 +67,59 @@
     }
 }
 
-@keyframes typewriter {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
-}
-
 @keyframes blink {
     0%, 100% {
         opacity: 1;
     }
     50% {
         opacity: 0;
+    }
+}
+
+@keyframes fillBar {
+    from {
+        width: 0;
+    }
+    to {
+        width: var(--target-width);
+    }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    20% {
+        transform: scale(25, 25);
+        opacity: 0.3;
+    }
+    100% {
+        transform: scale(40, 40);
+        opacity: 0;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes expandWidth {
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }
 
@@ -115,6 +153,10 @@
 }
 
 /* Typewriter Effect */
+.typewriter-text {
+    display: inline-block;
+}
+
 .typewriter-text::after {
     content: '|';
     animation: blink 1s infinite;
@@ -132,15 +174,6 @@
 /* Skill Bar Animation */
 .skill-progress.animated {
     animation: fillBar 1.5s ease-out forwards;
-}
-
-@keyframes fillBar {
-    from {
-        width: 0;
-    }
-    to {
-        width: var(--target-width);
-    }
 }
 
 /* Project Card Hover Effects */
@@ -178,21 +211,6 @@
     animation: ripple 1s ease-out;
 }
 
-@keyframes ripple {
-    0% {
-        transform: scale(0, 0);
-        opacity: 0.5;
-    }
-    20% {
-        transform: scale(25, 25);
-        opacity: 0.3;
-    }
-    100% {
-        transform: scale(40, 40);
-        opacity: 0;
-    }
-}
-
 /* Loading Animation for Stats */
 .stat-number.loading::after {
     content: '';
@@ -206,40 +224,16 @@
     margin-left: 5px;
 }
 
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
 /* Form Input Focus Animation */
 .form-group {
     position: relative;
-}
-
-.form-group input:focus + .floating-label,
-.form-group textarea:focus + .floating-label {
-    top: -10px;
-    left: 10px;
-    font-size: 0.8rem;
-    color: var(--primary-color);
-    background-color: white;
-    padding: 0 5px;
-}
-
-.floating-label {
-    position: absolute;
-    top: 15px;
-    left: 20px;
-    color: var(--gray-color);
-    transition: all 0.3s ease;
-    pointer-events: none;
 }
 
 /* Blog Animations */
 .blog-card {
     opacity: 0;
     transform: translateY(30px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .blog-card.animated {
@@ -252,17 +246,6 @@
 .blog-card:nth-child(5) { animation-delay: 0.8s; }
 .blog-card:nth-child(6) { animation-delay: 1s; }
 
-@keyframes slideInUp {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
 .blog-cta {
     animation: slideInUp 0.8s ease-out 1.2s both;
 }
@@ -271,6 +254,7 @@
 .publication-card {
     opacity: 0;
     transform: translateX(-30px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .publication-card.animated {
@@ -302,18 +286,8 @@
 .stat-card:nth-child(4) { animation-delay: 0.9s; }
 
 /* Citation counter animation */
-@keyframes countUp {
-    from {
-        content: "0";
-    }
-}
-
 .stat-number {
     display: inline-block;
-}
-
-.stat-number::after {
-    content: attr(data-count);
 }
 
 /* Smooth metric transitions */
@@ -341,8 +315,40 @@
     animation: expandWidth 0.5s ease-out forwards;
 }
 
-@keyframes expandWidth {
-    to {
-        width: 100%;
-    }
+/* Certification Card Animation */
+.certification-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
+.certification-card.animated {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.certification-card:nth-child(2) { animation-delay: 0.15s; }
+.certification-card:nth-child(3) { animation-delay: 0.3s; }
+.certification-card:nth-child(4) { animation-delay: 0.45s; }
+.certification-card:nth-child(5) { animation-delay: 0.6s; }
+.certification-card:nth-child(6) { animation-delay: 0.75s; }
+
+/* Timeline Item Animation */
+.timeline-item {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.timeline-item.animated {
+    animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.timeline-item:nth-child(even) {
+    transform: translateX(30px);
+    animation-name: fadeInRight;
+}
+
+.timeline-item:nth-child(2) { animation-delay: 0.15s; }
+.timeline-item:nth-child(3) { animation-delay: 0.3s; }
+.timeline-item:nth-child(4) { animation-delay: 0.45s; }
+.timeline-item:nth-child(5) { animation-delay: 0.6s; }
