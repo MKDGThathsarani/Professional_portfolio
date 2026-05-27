@@ -76,53 +76,6 @@
     }
 }
 
-@keyframes fillBar {
-    from {
-        width: 0;
-    }
-    to {
-        width: var(--target-width);
-    }
-}
-
-@keyframes ripple {
-    0% {
-        transform: scale(0, 0);
-        opacity: 0.5;
-    }
-    20% {
-        transform: scale(25, 25);
-        opacity: 0.3;
-    }
-    100% {
-        transform: scale(40, 40);
-        opacity: 0;
-    }
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes expandWidth {
-    to {
-        width: 100%;
-    }
-}
-
-@keyframes slideInUp {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
 /* Animation Classes */
 .fade-in-up {
     animation: fadeInUp 0.8s ease-out forwards;
@@ -152,11 +105,15 @@
     animation-delay: 0.6s;
 }
 
-/* Typewriter Effect */
-.typewriter-text {
-    display: inline-block;
+.delay-4 {
+    animation-delay: 0.8s;
 }
 
+.delay-5 {
+    animation-delay: 1s;
+}
+
+/* Typewriter Effect */
 .typewriter-text::after {
     content: '|';
     animation: blink 1s infinite;
@@ -176,6 +133,15 @@
     animation: fillBar 1.5s ease-out forwards;
 }
 
+@keyframes fillBar {
+    from {
+        width: 0;
+    }
+    to {
+        width: var(--target-width);
+    }
+}
+
 /* Project Card Hover Effects */
 .project-card {
     transform: perspective(1000px) rotateX(0) rotateY(0);
@@ -183,7 +149,7 @@
 }
 
 .project-card:hover {
-    transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+    transform: perspective(1000px) rotateX(3deg) rotateY(3deg);
 }
 
 /* Button Ripple Effect */
@@ -211,6 +177,21 @@
     animation: ripple 1s ease-out;
 }
 
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    20% {
+        transform: scale(25, 25);
+        opacity: 0.3;
+    }
+    100% {
+        transform: scale(40, 40);
+        opacity: 0;
+    }
+}
+
 /* Loading Animation for Stats */
 .stat-number.loading::after {
     content: '';
@@ -224,131 +205,130 @@
     margin-left: 5px;
 }
 
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 /* Form Input Focus Animation */
 .form-group {
     position: relative;
 }
 
-/* Blog Animations */
-.blog-card {
+.form-group input:focus,
+.form-group textarea:focus {
+    transform: translateY(-2px);
+}
+
+/* Card Entrance Animations */
+.project-card, .certification-card, .timeline-content {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.blog-card.animated {
-    animation: fadeInUp 0.8s ease-out forwards;
+.project-card.fade-in-up, 
+.certification-card.fade-in-up, 
+.timeline-content.fade-in-up {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.blog-card:nth-child(2) { animation-delay: 0.2s; }
-.blog-card:nth-child(3) { animation-delay: 0.4s; }
-.blog-card:nth-child(4) { animation-delay: 0.6s; }
-.blog-card:nth-child(5) { animation-delay: 0.8s; }
-.blog-card:nth-child(6) { animation-delay: 1s; }
+/* Staggered Animation Delays for Cards */
+.project-card:nth-child(1) { transition-delay: 0.1s; }
+.project-card:nth-child(2) { transition-delay: 0.2s; }
+.project-card:nth-child(3) { transition-delay: 0.3s; }
+.project-card:nth-child(4) { transition-delay: 0.4s; }
+.project-card:nth-child(5) { transition-delay: 0.5s; }
+.project-card:nth-child(6) { transition-delay: 0.6s; }
 
-.blog-cta {
-    animation: slideInUp 0.8s ease-out 1.2s both;
+.certification-card:nth-child(1) { transition-delay: 0.1s; }
+.certification-card:nth-child(2) { transition-delay: 0.2s; }
+.certification-card:nth-child(3) { transition-delay: 0.3s; }
+.certification-card:nth-child(4) { transition-delay: 0.4s; }
+.certification-card:nth-child(5) { transition-delay: 0.5s; }
+.certification-card:nth-child(6) { transition-delay: 0.6s; }
+
+.timeline-item:nth-child(1) .timeline-content { transition-delay: 0.1s; }
+.timeline-item:nth-child(2) .timeline-content { transition-delay: 0.2s; }
+.timeline-item:nth-child(3) .timeline-content { transition-delay: 0.3s; }
+.timeline-item:nth-child(4) .timeline-content { transition-delay: 0.4s; }
+.timeline-item:nth-child(5) .timeline-content { transition-delay: 0.5s; }
+
+/* Hover Animation for Social Links */
+.social-link {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Publications Animations */
-.publication-card {
-    opacity: 0;
-    transform: translateX(-30px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+.social-link:hover {
+    transform: translateY(-5px) scale(1.1);
 }
 
-.publication-card.animated {
-    animation: fadeInLeft 0.8s ease-out forwards;
+/* Smooth Scroll Behavior */
+html {
+    scroll-behavior: smooth;
 }
 
-.publication-card:nth-child(even) {
-    transform: translateX(30px);
-    animation-name: fadeInRight;
+/* Loading Animation for Page */
+body {
+    animation: fadeInPage 0.5s ease-out;
 }
 
-.publication-card:nth-child(2) { animation-delay: 0.2s; }
-.publication-card:nth-child(3) { animation-delay: 0.4s; }
-.publication-card:nth-child(4) { animation-delay: 0.6s; }
-.publication-card:nth-child(5) { animation-delay: 0.8s; }
-.publication-card:nth-child(6) { animation-delay: 1s; }
-
-.stat-card {
-    opacity: 0;
-    transform: translateY(30px);
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-.stat-card.animated {
-    animation: fadeInUp 0.8s ease-out forwards;
+/* Image Hover Zoom Effect */
+.image-container img,
+.project-image img {
+    transition: transform 0.5s ease;
 }
 
-.stat-card:nth-child(2) { animation-delay: 0.3s; }
-.stat-card:nth-child(3) { animation-delay: 0.6s; }
-.stat-card:nth-child(4) { animation-delay: 0.9s; }
-
-/* Citation counter animation */
-.stat-number {
-    display: inline-block;
+.image-container:hover img {
+    transform: scale(1.05);
 }
 
-/* Smooth metric transitions */
-.publication-metrics .metric {
-    transition: transform 0.3s ease;
+/* Certificate Card Hover Animation */
+.certification-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.publication-card:hover .publication-metrics .metric {
-    transform: translateY(-3px);
+.certification-card:hover {
+    transform: translateY(-10px);
 }
 
-/* Typewriter effect for publication titles on hover */
-.publication-title {
+/* Skill Bar Animation Enhancements */
+.skill-progress {
     position: relative;
+    overflow: hidden;
 }
 
-.publication-card:hover .publication-title::after {
+.skill-progress::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    top: 0;
     left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--primary-color);
-    animation: expandWidth 0.5s ease-out forwards;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: translateX(-100%);
 }
 
-/* Certification Card Animation */
-.certification-card {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+.skill-progress.animated::after {
+    animation: shimmer 1.5s ease-out;
 }
 
-.certification-card.animated {
-    animation: fadeInUp 0.8s ease-out forwards;
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
 }
-
-.certification-card:nth-child(2) { animation-delay: 0.15s; }
-.certification-card:nth-child(3) { animation-delay: 0.3s; }
-.certification-card:nth-child(4) { animation-delay: 0.45s; }
-.certification-card:nth-child(5) { animation-delay: 0.6s; }
-.certification-card:nth-child(6) { animation-delay: 0.75s; }
-
-/* Timeline Item Animation */
-.timeline-item {
-    opacity: 0;
-    transform: translateX(-30px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.timeline-item.animated {
-    animation: fadeInLeft 0.8s ease-out forwards;
-}
-
-.timeline-item:nth-child(even) {
-    transform: translateX(30px);
-    animation-name: fadeInRight;
-}
-
-.timeline-item:nth-child(2) { animation-delay: 0.15s; }
-.timeline-item:nth-child(3) { animation-delay: 0.3s; }
-.timeline-item:nth-child(4) { animation-delay: 0.45s; }
-.timeline-item:nth-child(5) { animation-delay: 0.6s; }
