@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initContactForm();
     initBackToTop();
     
-    // Set dynamic counts for projects and certifications
+    // Set dynamic counts
     setDynamicCounts();
     
     // Initialize stats counter
@@ -18,32 +18,28 @@ document.addEventListener('DOMContentLoaded', function() {
     animateElementsOnLoad();
 });
 
-// Set dynamic counts for projects and certifications
+// Set dynamic counts
 function setDynamicCounts() {
-    // Count actual projects from the projects section
+    // Count projects
     const projectsCount = document.querySelectorAll('.project-card').length;
     const projectsCountElement = document.getElementById('projectsCount');
     if (projectsCountElement) {
-        projectsCountElement.removeAttribute('data-count');
         projectsCountElement.setAttribute('data-count', projectsCount);
         projectsCountElement.textContent = '0';
     }
     
-    // Count actual certifications from the certifications section
-    const certificationsCount = document.querySelectorAll('.certification-card').length;
-    const certificationsCountElement = document.getElementById('certificationsCount');
-    if (certificationsCountElement) {
-        certificationsCountElement.removeAttribute('data-count');
-        certificationsCountElement.setAttribute('data-count', certificationsCount);
-        certificationsCountElement.textContent = '0';
+    // Set happy clients (freelance metric)
+    const clientsElement = document.getElementById('clientsCount');
+    if (clientsElement) {
+        clientsElement.setAttribute('data-count', '12');
+        clientsElement.textContent = '0';
     }
     
-    // Set coding hours (IT-focused metric)
-    const codingHoursElement = document.getElementById('codingHours');
-    if (codingHoursElement) {
-        codingHoursElement.removeAttribute('data-count');
-        codingHoursElement.setAttribute('data-count', '500');
-        codingHoursElement.textContent = '0';
+    // Set tech stacks count
+    const techStacksElement = document.getElementById('techStacksCount');
+    if (techStacksElement) {
+        techStacksElement.setAttribute('data-count', '8');
+        techStacksElement.textContent = '0';
     }
 }
 
@@ -138,7 +134,12 @@ function initTypewriter() {
     const typewriterText = document.querySelector('.typewriter-text');
     if (!typewriterText) return;
     
-    const texts = ['Software Engineer', 'Full Stack Developer', 'UI/UX Enthusiast', 'Problem Solver'];
+    const texts = [
+        'Building Scalable Web Apps', 
+        'React + Node.js Developer', 
+        'Open to Freelance Work', 
+        'Full Stack Developer'
+    ];
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -234,7 +235,7 @@ function initContactForm() {
                 submitBtn.disabled = true;
                 
                 setTimeout(() => {
-                    alert('Thank you for your message! I will get back to you soon.');
+                    alert('Thank you for your message! I will get back to you within 24 hours.');
                     contactForm.reset();
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;
@@ -364,7 +365,7 @@ if (newsletterForm) {
             submitBtn.disabled = true;
             
             setTimeout(() => {
-                alert('Thank you for subscribing to my tech newsletter!');
+                alert('Thank you for subscribing! You\'ll receive updates on my latest projects.');
                 emailInput.value = '';
                 submitBtn.innerHTML = originalHTML;
                 submitBtn.disabled = false;
