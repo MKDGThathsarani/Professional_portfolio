@@ -2041,3 +2041,174 @@ img {
 .download-btn i {
     font-size: 1.1rem;
 }
+
+/* ===== ABOUT SECTION - NEW STYLES FOR LINKEDIN CONTENT ===== */
+
+/* Skills Summary Box */
+.about-skills-summary {
+    background-color: #F9FCFB;
+    padding: 20px 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.about-skills-summary h4 {
+    color: var(--dark-color);
+    font-size: 1rem;
+    margin-bottom: 12px;
+}
+
+.about-skills-summary ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 20px;
+}
+
+.about-skills-summary ul li {
+    color: var(--gray-color);
+    font-size: 0.95rem;
+    padding: 4px 0;
+    position: relative;
+    padding-left: 20px;
+}
+
+.about-skills-summary ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+/* Highlight Box - For StudentHub */
+.about-highlight {
+    background: linear-gradient(135deg, #E8F4EF 0%, #FFFFFF 100%);
+    padding: 18px 22px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #E8F4EF;
+}
+
+.about-highlight p {
+    color: var(--dark-color);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.about-highlight strong {
+    color: var(--primary-color);
+}
+
+/* Goal / Vision Box */
+.about-goal {
+    padding: 15px 0 10px;
+    margin-bottom: 20px;
+}
+
+.about-goal p {
+    color: var(--gray-color);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0;
+    font-style: italic;
+}
+
+/* Call to Action Box */
+.about-cta {
+    margin-top: 20px;
+    padding: 15px 20px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.about-cta p {
+    color: var(--white);
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ===== PROJECTS - FEATURED BADGE ===== */
+
+.project-card.featured {
+    border: 2px solid var(--secondary-color);
+}
+
+.project-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--accent-color);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+}
+
+/* ===== CONTACT - MESSAGE BOX ===== */
+
+.contact-message {
+    padding: 15px 0 10px;
+    border-top: 1px solid #E8F4EF;
+    border-bottom: 1px solid #E8F4EF;
+    margin-bottom: 20px;
+}
+
+.contact-message p {
+    color: var(--dark-color);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+    font-style: italic;
+}
+
+/* ===== RESPONSIVE STYLES FOR NEW ELEMENTS ===== */
+
+@media (max-width: 768px) {
+    .about-skills-summary {
+        padding: 15px 18px;
+        text-align: left;
+    }
+    
+    .about-skills-summary ul {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+    
+    .about-skills-summary ul li {
+        font-size: 0.9rem;
+    }
+    
+    .about-highlight {
+        padding: 15px 18px;
+        text-align: left;
+    }
+    
+    .about-highlight p {
+        font-size: 0.95rem;
+    }
+    
+    .about-goal p {
+        font-size: 0.95rem;
+    }
+    
+    .about-cta p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-skills-summary ul li {
+        font-size: 0.85rem;
+    }
+}

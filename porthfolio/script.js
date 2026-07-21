@@ -116,12 +116,18 @@ function initScrollAnimations() {
     });
 }
 
-// Typewriter Effect - Updated with better texts
+// Typewriter Effect - Updated with LinkedIn About content
 function initTypewriter() {
     const typewriterText = document.querySelector('.typewriter-text');
     if (!typewriterText) return;
     
-    const texts = ['Web Designer', 'Health Information Technologist', 'Ayurveda & Tech Enthusiast', 'Healthcare Innovator'];
+    const texts = [
+        'Information Systems Designer',
+        'System Design & Requirements Analyst',
+        'Frontend Web Developer',
+        'Healthcare Technology Enthusiast',
+        'Building Smarter Solutions'
+    ];
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
