@@ -1,0 +1,496 @@
+/* ============================================================ */
+/* KEYFRAME ANIMATIONS                                          */
+/* ============================================================ */
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes scroll {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes fillBar {
+    from {
+        width: 0;
+    }
+    to {
+        width: var(--target-width);
+    }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    20% {
+        transform: scale(25, 25);
+        opacity: 0.3;
+    }
+    100% {
+        transform: scale(40, 40);
+        opacity: 0;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes expandWidth {
+    to {
+        width: 100%;
+    }
+}
+
+/* ============================================================ */
+/* NEW ANIMATIONS - Updated Features                            */
+/* ============================================================ */
+
+/* Pulse Dot for Journey Timeline */
+@keyframes pulse-dot {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+}
+
+/* Page Fade In on Load */
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Section Fade In on Scroll */
+@keyframes sectionFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Progress Bar Fill Animation */
+@keyframes progressFill {
+    from {
+        width: 0;
+    }
+    to {
+        width: var(--target-width, 0%);
+    }
+}
+
+/* Custom Cursor Pulse */
+@keyframes cursorPulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+/* ============================================================ */
+/* ANIMATION CLASSES                                            */
+/* ============================================================ */
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.fade-in-left {
+    animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.fade-in-right {
+    animation: fadeInRight 0.8s ease-out forwards;
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.delay-2 {
+    animation-delay: 0.4s;
+}
+
+.delay-3 {
+    animation-delay: 0.6s;
+}
+
+/* ============================================================ */
+/* TYPEWRITER EFFECT                                            */
+/* ============================================================ */
+
+.typewriter-text::after {
+    content: '|';
+    animation: blink 1s infinite;
+}
+
+/* ============================================================ */
+/* SECTION ENTRANCE ANIMATIONS                                  */
+/* ============================================================ */
+
+.section-title, .section-subtitle {
+    opacity: 0;
+}
+
+.section-title.animated, .section-subtitle.animated {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* ============================================================ */
+/* SKILL BAR ANIMATION                                          */
+/* ============================================================ */
+
+.skill-progress.animated {
+    animation: fillBar 1.5s ease-out forwards;
+}
+
+/* ============================================================ */
+/* PROJECT CARD HOVER EFFECTS                                   */
+/* ============================================================ */
+
+.project-card {
+    transform: perspective(1000px) rotateX(0) rotateY(0);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.project-card:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+}
+
+/* ============================================================ */
+/* BUTTON RIPPLE EFFECT                                         */
+/* ============================================================ */
+
+.btn-primary, .btn-secondary {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::after, .btn-secondary::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.btn-primary:focus:not(:active)::after,
+.btn-secondary:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+}
+
+/* ============================================================ */
+/* LOADING ANIMATION FOR STATS                                  */
+/* ============================================================ */
+
+.stat-number.loading::after {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--primary-color);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 5px;
+}
+
+/* ============================================================ */
+/* RESOURCES ANIMATIONS                                        */
+/* ============================================================ */
+
+/* Certification Cards */
+.certification-card {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.certification-card.animated {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.certification-card:nth-child(2) { animation-delay: 0.1s; }
+.certification-card:nth-child(3) { animation-delay: 0.2s; }
+.certification-card:nth-child(4) { animation-delay: 0.3s; }
+.certification-card:nth-child(5) { animation-delay: 0.4s; }
+.certification-card:nth-child(6) { animation-delay: 0.5s; }
+
+.certification-card:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+/* Download Cards */
+.download-card {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.download-card.animated {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.download-card:nth-child(2) { animation-delay: 0.2s; }
+.download-card:nth-child(3) { animation-delay: 0.4s; }
+
+/* Publication Cards */
+.publication-card {
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+.publication-card.animated {
+    animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.publication-card:nth-child(even) {
+    transform: translateX(30px);
+    animation-name: fadeInRight;
+}
+
+.publication-card:nth-child(2) { animation-delay: 0.2s; }
+.publication-card:nth-child(3) { animation-delay: 0.4s; }
+.publication-card:nth-child(4) { animation-delay: 0.6s; }
+.publication-card:nth-child(5) { animation-delay: 0.8s; }
+.publication-card:nth-child(6) { animation-delay: 1s; }
+
+/* Publication Title Hover Effect */
+.publication-title {
+    position: relative;
+}
+
+.publication-card:hover .publication-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    animation: expandWidth 0.5s ease-out forwards;
+}
+
+/* Stat Cards */
+.stat-card {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.stat-card.animated {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.stat-card:nth-child(2) { animation-delay: 0.3s; }
+.stat-card:nth-child(3) { animation-delay: 0.6s; }
+.stat-card:nth-child(4) { animation-delay: 0.9s; }
+
+/* Blog Cards */
+.blog-card {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.blog-card.animated {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.blog-card:nth-child(2) { animation-delay: 0.2s; }
+.blog-card:nth-child(3) { animation-delay: 0.4s; }
+.blog-card:nth-child(4) { animation-delay: 0.6s; }
+.blog-card:nth-child(5) { animation-delay: 0.8s; }
+.blog-card:nth-child(6) { animation-delay: 1s; }
+
+/* Blog CTA */
+.blog-cta {
+    animation: slideInUp 0.8s ease-out 1.2s both;
+}
+
+/* ============================================================ */
+/* NEW - JOURNEY TIMELINE ANIMATIONS                           */
+/* ============================================================ */
+
+.journey-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.journey-item.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================================ */
+/* NEW - ACCORDION ANIMATIONS                                  */
+/* ============================================================ */
+
+.accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+}
+
+.accordion-item.active .accordion-body {
+    max-height: 500px;
+}
+
+/* ============================================================ */
+/* NEW - SCROLL PROGRESS ANIMATION                             */
+/* ============================================================ */
+
+.scroll-progress {
+    transition: width 0.1s ease;
+}
+
+/* ============================================================ */
+/* NEW - PAGE & SECTION TRANSITIONS                            */
+/* ============================================================ */
+
+body {
+    animation: pageFadeIn 0.8s ease-out;
+}
+
+.section-container {
+    animation: sectionFadeIn 0.6s ease-out;
+}
+
+/* ============================================================ */
+/* RESPONSIVE ANIMATIONS - Mobile Optimizations                */
+/* ============================================================ */
+
+@media (max-width: 768px) {
+    .journey-item {
+        transform: translateY(20px);
+    }
+    
+    .certification-card,
+    .download-card,
+    .blog-card {
+        transform: translateY(20px);
+    }
+    
+    .publication-card {
+        transform: translateX(0);
+        transform: translateY(20px);
+    }
+    
+    .publication-card:nth-child(even) {
+        transform: translateX(0);
+        transform: translateY(20px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
